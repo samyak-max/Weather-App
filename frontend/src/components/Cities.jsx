@@ -19,7 +19,7 @@ function Cities() {
       }
       {resolved && <div className='flex w-full flex-col mt-8'>
         <div className='italic text-xl text-center'>Weather App</div>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-8'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-8 justify-items-center'>
           {city1.isResolved && <Card city={city1} setResolved={setResolved}/>}
           {city2.isResolved && <Card city={city2} setResolved={setResolved}/>}
           {city3.isResolved && <Card city={city3} setResolved={setResolved}/>}

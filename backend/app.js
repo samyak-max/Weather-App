@@ -5,8 +5,8 @@ const NodeCache = require('node-cache');
 const cors = require('cors')
 const jwt = require('jsonwebtoken');
 require('dotenv').config(); 
-const cron = require('node-cron');
-mongoose.connect('mongodb+srv://samyakchoudhary9:8pWgF2X2iWo5uD12@cluster0.whsreuw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+const cron = require('node-cron'); 
+mongoose.connect(process.env.MONGO_URI);
 const app = express();
 const port = 3000;
 const socketPort = 3001;
