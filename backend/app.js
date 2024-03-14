@@ -32,6 +32,18 @@ const myCache = new NodeCache({ stdTTL: 3600, checkperiod: 600 });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+cron.schedule('* */1 * * *', async () => {
+    const cities = await City.find();
+    if (cities) {
+        cities.forEach(async (city) => {
+            const response = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city.name}`);
+            city.current = response.data.current;
+            city.location = response.data.location;
+            await city.save();
+        });
+    }
+});
+
 cron.schedule('*/10 * * * *', async () => {
     const notifications = await UserPref.find();
     if(notifications){
